@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>TIMER CLOCK</h1>
+    <h1><span class="hours"></span>:<span class="minutes"></span>:<span class="seconds"></span></h1>
+
+
+    <script>
+        // Function to update the clock
+        function updateClock() {
+            const date = new Date();
+            let hour = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+
+            // Format single digit values with leading zero
+     
+            document.querySelector(".hours").textContent = hour;
+            document.querySelector(".minutes").textContent = minutes;
+            document.querySelector(".seconds").textContent = seconds;
+        }
+
+        // Call the updateClock function to display the initial time
+        updateClock();
+
+        // Set interval to update the clock every second
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>

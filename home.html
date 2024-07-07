@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>javascript</h1>
+
+    <!--js code-->
+    <script>
+       class user{
+            constructor(userName,age,phoneNumber){
+                this.age = age,
+                this.phoneNumber = phoneNumber;
+            }
+            //methods
+            sayHello(){
+                return this.userName + "said hello, his age is" +
+                this.age + "and his phone number is" +this.phoneNumber;
+            }
+        }
+        //instantiate
+        const user1 = new user("james",45,"0798657865");
+        document.write(user1.sayHello());
+
+     
+    </script>
+</body>
+</html>

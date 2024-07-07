@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Generator</title>
+<style>
+.card {
+    width: 200px;
+    height: 200px;
+    background-color: #6fff00; /* Default color */
+    border-radius: 10px;
+    margin: 20px auto; /* Center horizontally */
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: red;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px auto; /* Center horizontally */
+    display: block; /* Ensures the button takes full width */
+}
+</style>
+</head>
+<body>
+
+<div class="card" id="colorCard"></div>
+<button class="btn" onclick="generateColor()">Generate Color</button>
+
+<script>
+function generateColor() {
+    // Generate random RGB values
+    var red = Math.floor(Math.random() * 255); // Random red component between 0 and 255
+    var green = Math.floor(Math.random() * 255); // Random green component between 0 and 255
+    var blue = Math.floor(Math.random() * 255); // Random blue component between 0 and 255
+    
+    // Construct RGB color string
+    var rgbColor = "rgb(" + red + "," + green + "," + blue + ")";
+    
+    // Update card background color
+    document.getElementById("colorCard").style.backgroundColor = rgbColor;
+}
+setInterval(generateColor, 1000);
+</script>
+
+</body>
+</html>

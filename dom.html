@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #output {
+            color: purple;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <form id="myForm">
+        <label for="name">Enter Your Name:</label>
+        <input type="text" id="name" > <br><br>
+        
+        <label for="loanAmount">Enter Loan Amount:</label>
+        <input type="number" id="loanAmount"> <br><br>
+        
+        <label for="ID">Enter ID:</label>
+        <input type="number" id="ID" > <br><br>
+        
+        <label for="periodOfPayment">Enter Period of Payment (in months):</label>
+        <input type="number" id="periodOfPayment" > <br><br>
+        
+        <label for="salary">Enter Salary Amount:</label>
+        <input type="number" id="salary"> <br><br>
+        
+        <button type="button" onclick="displayMessage()">Submit</button>
+    </form> <br> <br> 
+
+    <div id="output"></div> 
+    
+    <script>
+        function displayMessage() {
+            let name = document.getElementById("name").value;
+            let loanAmount = document.getElementById("loanAmount").value;
+            let ID = document.getElementById("ID").value;
+            let periodOfPayment = document.getElementById("periodOfPayment").value;
+            let salary = document.getElementById("salary").value;
+
+
+            if (!name || !loanAmount || !ID || !periodOfPayment || !salary) {
+                alert("please fill all fields");
+                return;
+            }
+
+            loanAmount = parseFloat(loanAmount);
+            salary = parseFloat(salary);
+            periodOfPayment = parseFloat(periodOfPayment);
+
+            if (!checkLoanEligibility(loanAmount,salary)) {
+                document.getElementById("output").innerHTML = "Your salary is too low to get your desired loan amount.";
+                return;  
+            }
+
+            let interestRate = 0.01;
+
+            if (periodOfPayment < 6) {
+                interestRate = 0.003;
+            }
+
+            if (salary < 50000) {
+                interestRate = 0.005;
+            }
+
+            let totalAmount = loanAmount * (1 + interestRate) * periodOfPayment;
+
+
+            let message = "Hello, " + name + ". Your ID is " + ID  + ".<br>Your total loan amount with interest for " + periodOfPayment + "months is Ksh " + totalAmount.toFixed(2);
+            document.getElementById("output").innerHTML = message;
+        }
+
+        function checkLoanEligibility(loanAmount, salary) {
+            return loanAmount <= salary;
+        }
+    </script>
+</body>
+</html>

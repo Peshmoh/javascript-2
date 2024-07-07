@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body class="changecolor">
+    <h1>background color changer</h1>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem, esse! <br> Nostrum magni ipsum quisquam necessitatibus incidunt esse officia cupiditate, <br>rerum sequi, fugiat aut dolor dolorem itaque consequuntur repudiandae, quis <br>explicabo ullam nesciunt distinctio! Repellat fugit asperiores, corrupti <br>debitis aspernatur incidunt sint ea quam reprehenderit quod dolorem commodi <br>error perspiciatis id.</p>
+
+    <button onclick="displaycolors()">color modes</button>
+
+    <script>
+        let colors = ["green", "purple", "blue"];
+
+        function displaycolors() {
+            let randomIndex = Math.floor(Math.random() * colors.length);
+            let randomColor = colors[randomIndex];
+            document.querySelector(".changecolor").style.backgroundColor = randomColor;
+        }
+    </script>
+</body>
+</html>

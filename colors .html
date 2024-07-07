@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Button</title>
+</head>
+<body>
+    <h1>change color</h1>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit dicta aperiam <br>cupiditate ab nihil consequatur, voluptate quia dolore laboriosam iusto. Illum <br>a quod quas perferendis exercitationem voluptatem ea ducimus maiores ipsa <br>alias asperiores odio voluptatum, quasi neque reprehenderit eveniet repellat <br>impedit et quisquam quam aperiam odit iure. Quidem nulla porro ipsum cumque  <br>error alias recusandae.</p>
+
+<button onclick="changeColor()">Change Color</button>
+
+<script>
+function changeColor(){
+  const colors = ['lightgreen', 'purple', 'blue'];
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  document.body.style.backgroundColor = randomColor;
+}
+</script>
+
+</body>
+</html>

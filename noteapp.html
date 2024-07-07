@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notes App</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    #noteInput {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    #noteList {
+        list-style: none;
+        padding: 0;
+    }
+
+    .noteItem {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .deleteBtn {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .deleteBtn:hover {
+        background-color: #d32f2f;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Notes App</h1>
+    <input type="text" id="noteInput" placeholder="Enter your note">
+    <ul id="noteList"></ul>
+</div>                                                                                                                                                                                                                                                  
+
+<script>
+    // Function to load notes from local storage
+    function loadNotes() {
+        const notes = JSON.parse(localStorage.getItem('notes'));
+        if (notes) {
+            notes.forEach(note => addNoteToList(note));
+        }
+    }
+
+    // Function to add note to the list
+    function addNoteToList(note) {
+        const noteList = document.getElementById('noteList');
+        const li = document.createElement('li');
+        li.className = 'noteItem';
+        li.innerHTML = `
+            <span>${note}</span>
+            <button class="deleteBtn">Delete</button>
+        `;
+        noteList.appendChild(li);
+    }
+
+    // Function to add note
+    function addNote() {
+        const noteInput = document.getElementById('noteInput');
+        const noteText = noteInput.value.trim();
+        if (noteText !== '') {
+            addNoteToList(noteText);
+            saveNoteToLocalStorage(noteText);
+            noteInput.value = '';
+        } else {
+            alert('Please enter a note.');
+        }
+    }
+
+    // Function to save note to local storage
+    function saveNoteToLocalStorage(note) {
+        let notes = JSON.parse(localStorage.getItem('notes')) || [];
+        notes.push(note);
+        localStorage.setItem('notes', JSON.stringify(notes));
+    }
+
+    // Function to delete note
+    function deleteNote(event) {
+        if (event.target.classList.contains('deleteBtn')) {
+            const item = event.target.parentElement;
+            const text = item.querySelector('span').textContent;
+            item.remove();
+            deleteNoteFromLocalStorage(text);
+        }
+    }
+
+    // Function to delete note from local storage
+    function deleteNoteFromLocalStorage(noteText) {
+        let notes = JSON.parse(localStorage.getItem('notes'));
+        notes = notes.filter(note => note !== noteText);
+        localStorage.setItem('notes', JSON.stringify(notes));
+    }
+
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', loadNotes);
+    document.getElementById('noteInput').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            addNote();
+        }
+    });
+    document.getElementById('noteList').addEventListener('click', deleteNote);
+</script>
+</body>
+</html>

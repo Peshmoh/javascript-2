@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>conditional statement</h1>
+
+   <script>
+ 
+//  let age = 16;
+
+//  if(age > 18){
+//     console.log("you're an adult");
+//  }
+  
+//  else if(age >= 16){
+//     console.log("you are a teenager");
+//  }
+ 
+ 
+//  else{console.log("you are a child");
+// }
+
+let dayName = 5;
+
+switch (dayName){
+    case 1:
+        dayName = "sunday";
+        break;
+    
+    case 2 :
+        dayName = "monday";
+        break;
+     case 3 :
+        dayName = "Tuesday";
+        break;
+    case 4 :
+        dayName = "wednesday";
+        break;
+    case 5 :
+        dayName = "Thursday";
+        break;
+    case 6 :
+        dayName = "friday";
+        break;
+    case 7:
+        dayName = "sarturday";
+        break;
+    default:
+        dayName = "invalid number"
+        break;
+}
+
+console.log("The day is:" +dayName);
+
+//Ternary Operator
+//condtion ? value_if_true : value_if_false
+
+let age = 20;
+
+let msg = (age >=18) ? "you are an adult" : "you are a minor";
+console.log(msg);
+
+   </script>
+</body>
+</html>
